@@ -1,123 +1,62 @@
 
-    var deathMage = new Wizard ({name: "Rot", health:75,});
-    var death1Decay = new Spells({name:"Decay", damage:20,school: Death, affects: curse });
-    var death2Zomb = new Spells({name:"Summon Undead", damage:20,school: Death, affects: familar });
-    var death3Fright =new Spells({name:"Decay", damage:5,school: Death, affects: frighten });
 
-    var natureMage = new Wizard ({name: "Bear Oakwood", health:120,});
-    var nat1Growth = new Spells({name:"Growth", damage: -20 ,school: Nature, affects: heal });
-    var nat2Trnsfrm = new Spells({name:"Lichen", damage: -100 ,school: Nature, affects: heal });
-
-    var fireMage = new Wizard ({name: "Phoenix Burnslayer", health:100,});
-    var fire1Fball = new Spells({name:"Fireball", damage:25,school: Fire, affects: burn });
-    var burn = new Affects ({name: "Burn", affectType: "Damage over Time", damage: 7 });
-
-
-    var thunderMage = new Wizard ({name: "Griswold Thunder", health:90,});
-    var thunder1Fly = new Spells({name:"Fly", damage:0 ,school: Sky, affects: fly });
-
-
-    var illusionMage = new Wizard ({name: "Frederick Free", health:100,});
-    var ill1Invis= new Spells({name:"Invisibility", damage:35,school: Illusion, affects: invis });
-    var ill2Blind = new Spells({name:"Blind", damage:5,school: Illusion, affects: blind });
-    var ill3Dark = new Spells({name:"Darkness", damage:0, school: Illusion, affects: darkness });
-
-    var waterMage = new Wizard ({name: "Jaina Iceheart", health:100,});
-    var ice1IceBrth = new Spells({name:"Icy Breath", damage:35,school: Water, affects: freeze });
-
-
-
-
-
-
-console.log("Two wizards on the high tower meet.  Each, a candidate from their school, every 4 years only a single wizard survives to find his way in the world, which school do you represent?  Choose from the following: School of Fire, School of Water, School of Nature, School of Death, School of Illusion, School of Sky, School of Earth");
-
-Math.floor ((Math.random() *12) +1);
 function Wizard(options){
   var option = options || {};
-  $(this).name = option.name;
-  $(this).health = option.health;
-  $(this).spell = new Spells ({name:"Magic Missle", damage:5, Affects: "none"});
-  $(this).cast = function(enemy){
+  this.wizName = option.wizName || "Mr.Wizard";
+  this.health = option.health;
+  this.spell = 
+  this.status = 1;
+  this.cast = function(enemyWizard){
     var hitOrMiss = Math.floor ((Math.random() *12) +1);
-    if (hit > 4) {
-      console.log("You were unable to avoid being hit! Suffer the spell damage and affects");
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
-      if (){
-
-      }
+    if (hitorMiss > 4) {
+      spell.damage = enemyWizard.health - this.spell.damage;
+      console.log("You hit the enemy wizard with your spell! You do ");
     }
-
   };
 }
-
 function Spells (option){
-  $(this).name = option.name;
-  $(this).school = option.school;
-  $(this).damage = option.damage;
-  $(this).affects = new Affects ({name: "none"});
+  this.name = option.name;
+  this.school = option.school;
+  this.damage = option.damage;
 }
 
 
-function Affects (option){
-  $(this).name = option.name;
-  $(this).affectType = option.affect;
-  $(this).damage = option.damage;
-  $(this).familarHP = 50;
-  $(this).
+function Weather (option){
+  this.name = option.name;
+  this.typeID = option.typeID;
 }
 
 
+var heat = new Weather ({name: "Heat Wave", typeID:1});
+var cold = new Weather ({name: "Cold Snap", typeID:2});
+var storm = new Weather ({name: "Storm", typeID:3});
 
 //DEATH
-var deathMage = new Wizard ({name: "Rot", health:75,});
-var death1Decay = new Spells({name:"Decay", damage:20,school: Death, affects: curse });
-var death2Zomb = new Spells({name:"Summon Undead", damage:20,school: Death, affects: familar });
-var death3Fright =new Spells({name:"Decay", damage:5,school: Death, affects: frighten });
-var curse = new Affects({name: "Cursed", damage: 5 })
+var deathWiz = new Wizard ({wizName: "Rot", health:75,});
+var decay = new Spells({name:"Decay", damage:20,school: "Death"});
+// var death2Zomb = new Spells({name:"Summon Undead", damage:20,school: Death, affects: familar });
+// var death3Fright =new Spells({name:"Decay", damage:5,school: Death, affects: frighten });
+// var curse = new Affects({name: "Cursed", damage: 5 })
 //NATURE
-var natureMage = new Wizard ({name: "Bear Oakwood", health:120,});
-var nat1Growth = new Spells({name:"Growth", damage: -20 ,school: Nature, affects: heal });
-var nat2Trnsfrm = new Spells({name:"Bear Form", damage: -100 ,school: Nature, affects: bear });
+var natureWiz = new Wizard ({wizName: "Bear Oakwood", health:120,});
+var roots = new Spells({name:"Roots", damage: 20 ,school: "Nature"});
+// var nat2Trnsfrm = new Spells({name:"Bear Form", damage: -100 ,school: Nature, affects: bear });
 
 //FIRE
-var fireMage = new Wizard ({name: "Phoenix Burnslayer", health:100,});
-var fire1Fball = new Spells({name:"Fireball", damage:25,school: Fire, affects: burn });
-var burn = new Affects ({name: "Burn", affectType: "Damage over Time", damage: 7 });
-//THUNDER
-var thunderMage = new Wizard ({name: "Griswold Thunder", health:90,});
-var thunder1Fly = new Spells({name:"Fly", damage:0 ,school: Sky, affects: fly });
-//ILLUSION
-var illusionMage = new Wizard ({name: "Frederick Free", health:100,});
-var ill1Invis= new Spells({name:"Invisibility", damage:35,school: Illusion, affects: invis });
-var ill2Blind = new Spells({name:"Blind", damage:5,school: Illusion, affects: blind });
-var ill3Dark = new Spells({name:"Darkness", damage:0, school: Illusion, affects: darkness });
+var fireball = new Spells({name:"Fireball", damage:25,school: "Fire"});
+var fireWiz = new Wizard ({wizName: "Phoenix Burnslayer", health:100, spell: fireball});
 
-var waterMage = new Wizard ({name: "Jaina Iceheart", health:100,});
-var ice1IceBrth = new Spells({name:"Icy Breath", damage:35,school: Water, affects: freeze });
+// var burn = new Affects ({name: "Burn", affectType: "Damage over Time", damage: 7 });
+//THUNDER
+var thunderWiz = new Wizard ({wizName: "Griswold Thunder", health:90,});
+var lightning = new Spells({name:"Lightning", damage:15 ,school: "Sky"});
+//ILLUSION
+var Illusion = new Wizard ({wizName: "Frederick Free", health:100,});
+var invisibility= new Spells({name:"Invisibility", damage:35,school: "Illusion"});
+// var ill2Blind = new Spells({name:"Blind", damage:5,school: Illusion});
+// var ill3Dark = new Spells({name:"Darkness", damage:0, school: Illusion,});
+var waterWiz = new Wizard ({wizName: "Jaina Iceheart", health:100,});
+var icebreath = new Spells({name:"Icy Breath", damage:35,school: "Water"});
+
+
+var enemyWizard = fireWiz;
